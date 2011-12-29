@@ -14,7 +14,7 @@ namespace Seans_New_Git_Project
         public string Surname {get;set;}
         public string EmailAddress { get; set; }
         public string Telephone { get; set; } 
-                
+        public string Address {get;set;}       
     }
 
 
