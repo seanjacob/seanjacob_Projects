@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seans-New-Git-Project", "Seans-New-Git-Project\Seans-New-Git-Project.csproj", "{34637A3C-43AD-4E35-9B96-452847F0691F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars", "Cars\Cars.csproj", "{43F983FF-8C02-47FD-BE84-ED33BF917E16}"
 EndProject
 Global
