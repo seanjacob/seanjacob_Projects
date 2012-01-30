@@ -10,6 +10,14 @@ namespace Cars
 
         public static decimal FuelLevel { get; set; }
         public static decimal FuelCapacity { get; set; }
+        public static decimal Mileage { get; set; }
+        public static decimal AvgMPG { get; set; }        
+        public static int Wheels { get; set; }
+        public static int Gears { get; set; }
+        public static int EngineCC { get; set; }
+        public static int TopSpeed { get; set; }
+        public static string manufacturer { get; set; }
+        public static string model { get; set; }
 
         
 
@@ -17,11 +25,21 @@ namespace Cars
         public static void Main(string[] args)
         {
             FuelLevel = 0;
-            FuelCapacity = 60;
+            FuelCapacity = 50;
+            Mileage = 0;
+            AvgMPG = 10;            
+            Wheels = 4;
+            Gears = 5;
+            EngineCC = 1400;
+            TopSpeed = 120;
+            manufacturer = "Citroen";
+            model = "Saxo";
             
 
-            Console.WriteLine("Welcome to my car app. Please see the availablee commands below");
-            Console.WriteLine("add fuel 30.5 (or any amount you want)");
+            Console.WriteLine("Welcome to my car app. Please see the available commands below:");
+            Console.WriteLine("1. get info - get info of car");
+            Console.WriteLine("2. add fuel - add fuel to car");
+            Console.WriteLine("3. drive - add mileage to car");
             while (true) // Loop indefinitely
             {
                 string userCommand = Console.ReadLine().ToLower(); // Get string from user
@@ -32,11 +50,27 @@ namespace Cars
                         decimal fuelAmount = decimal.Parse(userCommand.Replace("add fuel", "").Trim());
                         AddFuel(fuelAmount);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.Write("Sorry an error occured trying to add the fuel " + ex.Message);
+                        Console.Write("Sorry an error occured trying to add the fuel");
                     }
 
+                }
+                else if (userCommand.StartsWith("drive"))
+                {
+                    try
+                    {
+                        decimal mileageAmount = decimal.Parse(userCommand.Replace("drive", "").Trim());
+                        Drive(mileageAmount);
+                    }
+                    catch (Exception)
+                    {
+                        Console.Write("Sorry an error occured trying to add mileage");
+                    }
+                }
+                else if (userCommand.StartsWith("get info"))
+                {
+                    GetInfo();
                 }
                 else
                 {
@@ -58,6 +92,27 @@ namespace Cars
                 FuelLevel = newLevel;
                 Console.WriteLine("Fuel added new level at " + FuelLevel);
             }
+        }
+
+        public static void GetInfo()
+        {
+            Console.WriteLine("Manufacturer: " + manufacturer);
+            Console.WriteLine("Model: " + model);
+            Console.WriteLine("Engine CC: " + EngineCC);
+            Console.WriteLine("Top Speed: " + TopSpeed);
+            Console.WriteLine("Wheels: " + Wheels);            
+            Console.WriteLine("Gears: " + Gears);
+            Console.WriteLine("Mileage: " + Mileage);
+            Console.WriteLine("Fuel Capacity: " + FuelCapacity);
+            Console.WriteLine("Average MPG: " + AvgMPG);
+            Console.WriteLine("Current Fuel Level: " + FuelLevel);
+        }
+
+        public static void Drive(decimal miles)
+        {
+            decimal newMiles = Mileage + miles;
+            Console.WriteLine("Your total mileage is " + newMiles);
+            
         }
 
 
