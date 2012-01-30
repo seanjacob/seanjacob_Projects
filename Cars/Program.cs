@@ -20,7 +20,7 @@ namespace Cars
             FuelCapacity = 60;
             
 
-            Console.WriteLine("Welcome to my car app. Please see the available commands below");
+            Console.WriteLine("Welcome to my car app. Please see the availablee commands below");
             Console.WriteLine("add fuel 30.5 (or any amount you want)");
             while (true) // Loop indefinitely
             {
