@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Cars.Phase2;
 
 namespace Cars
 {
@@ -24,17 +25,29 @@ namespace Cars
 
         public static void Main(string[] args)
         {
+            //RunProgram1();
+            Program2 myObject = new Program2();
+            while (true) // Loop indefinitely
+            {
+                string userCommand = Console.ReadLine().ToLower(); // Get string from user                
+                myObject.Run(userCommand);
+            }
+            
+        }
+
+        public static void RunProgram1()
+        {
             FuelLevel = 0;
             FuelCapacity = 50;
             Mileage = 0;
-            AvgMPG = 10;            
+            AvgMPG = 10;
             Wheels = 4;
             Gears = 5;
             EngineCC = 1400;
             TopSpeed = 120;
             manufacturer = "Citroen";
             model = "Saxo";
-            
+
 
             Console.WriteLine("Welcome to my car app. Please see the available commands below:");
             Console.WriteLine("1. get info - get info of car");
@@ -77,6 +90,7 @@ namespace Cars
                     Console.Write("Sorry I didnt catch that? ");
                 }
             }
+
         }
 
         public static void AddFuel(decimal amount)
@@ -109,9 +123,20 @@ namespace Cars
         }
 
         public static void Drive(decimal miles)
-        {
-            decimal newMiles = Mileage + miles;
-            Console.WriteLine("Your total mileage is " + newMiles);
+        {                        
+            decimal fuelNeeded = miles / AvgMPG;
+
+            if (FuelLevel >= fuelNeeded)
+            {
+                Mileage += miles;
+                FuelLevel -= fuelNeeded;
+                Console.WriteLine("Your fuel level is now " + FuelLevel);
+                Console.WriteLine("Your total mileage is " + Mileage);
+            }
+            else
+            {
+                Console.WriteLine("Sorry you don't have enough fuel to make this trip");
+            }
             
         }
 
