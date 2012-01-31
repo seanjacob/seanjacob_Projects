@@ -27,8 +27,12 @@ namespace Cars
         {
             //RunProgram1();
             Program2 myObject = new Program2();
+            Console.WriteLine("Welcome to my car app. Please see the available commands below:");
+            Console.WriteLine("1. get info - get info of car");
+            Console.WriteLine("2. add fuel - add fuel to car");
+            Console.WriteLine("3. drive - add mileage to car \n");
             while (true) // Loop indefinitely
-            {
+            {                
                 string userCommand = Console.ReadLine().ToLower(); // Get string from user                
                 myObject.Run(userCommand);
             }

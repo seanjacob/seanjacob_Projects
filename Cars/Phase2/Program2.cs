@@ -13,21 +13,66 @@ namespace Cars.Phase2
         {
             MyCar = new Car();
         }
-        
+
         public void Run(string command)
         {
-            Console.WriteLine(MyCar.GetInfo());
-            
-            ReturnValue ret = MyCar.Drive();
-            if (ret.Success == true)
+
+            if (command.StartsWith("get info"))
             {
-                Console.WriteLine(ret.Message);
+                Console.WriteLine(MyCar.GetInfo());
             }
+
+            else if (command.StartsWith("add fuel")) // Check string
+            {
+                try
+                {
+                    decimal fuelAmount = decimal.Parse(command.Replace("add fuel", "").Trim());
+                    
+                    ReturnValue ret = MyCar.AddFuel(fuelAmount);                    
+                    
+                    if (ret.Success == true)
+                    {
+                        Console.WriteLine(ret.Message);
+                    }
+                    else
+                    {
+                        Console.WriteLine(ret.Message);
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Sorry an error occurred trying to add the fuel \n");
+                }
+
+            }
+                                
+            else if (command.StartsWith("drive"))
+            {
+                try
+                {
+                    decimal mileageAmount = decimal.Parse(command.Replace("drive", "").Trim());
+
+                    ReturnValue ret = MyCar.Drive(mileageAmount);
+                    
+                    if (ret.Success == true)
+                    {
+                        Console.WriteLine(ret.Message);
+                    }
+                    else
+                    {
+                        Console.WriteLine(ret.Message);
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Sorry an error occurred trying to add mileage \n");
+                }
+            }
+            
             else
             {
-                Console.WriteLine(ret.Message);
+                Console.WriteLine("Sorry I didnt catch that? ");
             }
-           
         }
     }
 }
