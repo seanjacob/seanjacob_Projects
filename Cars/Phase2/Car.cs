@@ -77,7 +77,7 @@ namespace Cars.Phase2
         public string Drive()
         {
             Mileage += DriveAmount;
-            Info = "You have drove " + DriveAmount + " miles. Total car mileage " + Mileage + "\n";
+            Info = "You have driven " + DriveAmount + " miles. Total car mileage " + Mileage + "\n";
             return(Info);
         }
 

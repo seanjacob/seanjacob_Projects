@@ -88,8 +88,7 @@ namespace Cars.Phase2
                     }
                     else
                     {
-                        Console.WriteLine(ret.Message);
-                        Console.WriteLine("\n");
+                        Console.WriteLine(ret.Message);                        
                     }
                 }
                 catch (Exception)
@@ -100,7 +99,7 @@ namespace Cars.Phase2
             
             else
             {
-                Console.WriteLine("Sorry I didnt catch that? ");
+                Console.WriteLine("Sorry I didnt catch that? \n");
             }
         }
     }
