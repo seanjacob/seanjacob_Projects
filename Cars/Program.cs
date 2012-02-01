@@ -21,8 +21,6 @@ namespace Cars
         public static string model { get; set; }
 
         
-
-
         public static void Main(string[] args)
         {
             //RunProgram1();
@@ -30,7 +28,8 @@ namespace Cars
             Console.WriteLine("Welcome to my car app. Please see the available commands below:");
             Console.WriteLine("1. get info - get info of car");
             Console.WriteLine("2. add fuel - add fuel to car");
-            Console.WriteLine("3. drive - add mileage to car \n");
+            Console.WriteLine("3. plan - plan journey \n");
+            //Console.WriteLine("4. drive - add mileage to car \n");
             while (true) // Loop indefinitely
             {                
                 string userCommand = Console.ReadLine().ToLower(); // Get string from user                

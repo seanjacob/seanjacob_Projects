@@ -26,41 +26,70 @@ namespace Cars.Phase2
             {
                 try
                 {
-                    decimal fuelAmount = decimal.Parse(command.Replace("add fuel", "").Trim());
-                    
-                    ReturnValue ret = MyCar.AddFuel(fuelAmount);                    
-                    
-                    if (ret.Success == true)
+                    //decimal fuelAmount = decimal.Parse(command.Replace("add fuel", "").Trim());
+
+                    while (true)
                     {
-                        Console.WriteLine(ret.Message);
-                    }
-                    else
-                    {
-                        Console.WriteLine(ret.Message);
+
+                        Console.WriteLine("How much fuel?");
+
+                        string commandAmount = Console.ReadLine();
+                        decimal fuelAmount = Decimal.Parse(commandAmount);
+
+                        ReturnValue ret = MyCar.AddFuel(fuelAmount);
+
+                        if (ret.Success == true)
+                        {
+                            Console.WriteLine(ret.Message);
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine(ret.Message);
+                            string commandRetry = Console.ReadLine().ToLower();
+                            if (commandRetry.StartsWith("n"))
+                            {
+                                Console.WriteLine("Ok then. \n");
+                                break;
+                            }
+                        }
                     }
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine("Sorry an error occurred trying to add the fuel \n");
+                    Console.WriteLine("Sorry an error occurred trying to add the fuel. \n");
                 }
 
             }
                                 
-            else if (command.StartsWith("drive"))
+            else if (command.StartsWith("plan"))
             {
                 try
-                {
-                    decimal mileageAmount = decimal.Parse(command.Replace("drive", "").Trim());
+                {                    
+                    Console.WriteLine("How many miles?");
 
-                    ReturnValue ret = MyCar.Drive(mileageAmount);
+                    string commandAmount = Console.ReadLine();
+                    decimal mileageAmount = Decimal.Parse(commandAmount);
+                    
+                    ReturnValue ret = MyCar.Plan(mileageAmount);
                     
                     if (ret.Success == true)
                     {
                         Console.WriteLine(ret.Message);
+                        string commandDrive = Console.ReadLine().ToLower();
+                        if (commandDrive.StartsWith("y"))
+                        {
+                            Console.WriteLine(MyCar.Drive());
+                        }
+                        else
+                        {
+                            Console.WriteLine("Ok then. \n");
+                        }
                     }
                     else
                     {
                         Console.WriteLine(ret.Message);
+                        Console.WriteLine("\n");
                     }
                 }
                 catch (Exception)

@@ -19,8 +19,10 @@ namespace Cars.Phase2
         public string Manufacturer { get; set; }
         public string Model { get; set; }
         public string Info { get; set; }
+        public decimal DriveAmount { get; set; }
 
-        public Car() {
+        public Car() 
+        {
             FuelCapacity = 50;
             AvgMPG = 10;
             Manufacturer = "Citroen";
@@ -60,32 +62,38 @@ namespace Cars.Phase2
         {
             decimal newLevel = FuelLevel + amount;
 
-            if (newLevel < FuelCapacity)
+            if (newLevel <= FuelCapacity)
             {
                 FuelLevel = newLevel;
-                return new ReturnValue(true, "New fuel amount " + FuelLevel + "\n");
+                return new ReturnValue(true, "Fuel added. Current capacity is " + FuelLevel + " litres. \n");
             }
             else
             {
                 decimal available = FuelCapacity - FuelLevel;
-                return new ReturnValue(false, "Sorry you tried to add too much fuel, the cars capacity is " + FuelCapacity + " you only have " + available + " litres remaining \n");
+                return new ReturnValue(false, "That’s too much you can only add " + available + " litres.  Do you want to try again Y/N?");
             }
         }
 
+        public string Drive()
+        {
+            Mileage += DriveAmount;
+            Info = "You have drove " + DriveAmount + " miles. Total car mileage " + Mileage + "\n";
+            return(Info);
+        }
 
-        public ReturnValue Drive(decimal miles)
+        public ReturnValue Plan(decimal miles)
         {
             decimal fuelNeeded = miles / AvgMPG;
 
             if (FuelLevel >= fuelNeeded)
-            {
-                Mileage += miles;
-                FuelLevel -= fuelNeeded;
-                return new ReturnValue(true, "I've driven " + Mileage + " miles \nRemaining fuel " + FuelLevel + "\n" );
+            {                
+                DriveAmount = miles;
+                FuelLevel -= fuelNeeded;                
+                return new ReturnValue(true, "After " + miles + " miles you will have " + FuelLevel + " litres remaining. Would you like to take this journey Y/N?" );
             }
             else
             {
-                return new ReturnValue(false, "You dont have enough fuel \n");
+                return new ReturnValue(false, "You dont have enough fuel for this journey. \n");
             }
         }
 
