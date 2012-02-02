@@ -18,8 +18,7 @@ namespace Cars.Phase2
         public int TopSpeed { get; set; }
         public string Manufacturer { get; set; }
         public string Model { get; set; }
-        public string Info { get; set; }
-        public decimal DriveAmount { get; set; }
+        public string Info { get; set; }        
 
         public Car() 
         {
@@ -74,26 +73,27 @@ namespace Cars.Phase2
             }
         }
 
-        public string Drive()
+        public string Drive(decimal mileageAmount)
         {
-            Mileage += DriveAmount;
+            Mileage += mileageAmount;
+            FuelLevel -= (mileageAmount / AvgMPG);
             Info = "You have driven " + DriveAmount + " miles. Total car mileage " + Mileage + "\n";
             return(Info);
         }
 
         public ReturnValue Plan(decimal miles)
         {
-            decimal fuelNeeded = miles / AvgMPG;
+            decimal FuelNeeded = miles / AvgMPG;
 
-            if (FuelLevel >= fuelNeeded)
-            {                
-                DriveAmount = miles;
-                FuelLevel -= fuelNeeded;                
-                return new ReturnValue(true, "After " + miles + " miles you will have " + FuelLevel + " litres remaining. Would you like to take this journey Y/N?" );
+            if (FuelLevel >= FuelNeeded)
+            {                                
+                decimal fuelLeft = FuelLevel - FuelNeeded;
+                
+                return new ReturnValue(true, "After " + miles + " miles you will have " + fuelLeft + " litres remaining. Would you like to take this journey Y/N?" );
             }
             else
             {
-                return new ReturnValue(false, "You dont have enough fuel for this journey. \n");
+                return new ReturnValue(false, "You don't have enough fuel for this journey. \n");
             }
         }
 

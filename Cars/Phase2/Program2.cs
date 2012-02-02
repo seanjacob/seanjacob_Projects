@@ -79,7 +79,7 @@ namespace Cars.Phase2
                         string commandDrive = Console.ReadLine().ToLower();
                         if (commandDrive.StartsWith("y"))
                         {
-                            Console.WriteLine(MyCar.Drive());
+                            Console.WriteLine(MyCar.Drive(mileageAmount));
                         }
                         else
                         {
@@ -99,7 +99,7 @@ namespace Cars.Phase2
             
             else
             {
-                Console.WriteLine("Sorry I didnt catch that? \n");
+                Console.WriteLine("Sorry I didn't catch that? \n");
             }
         }
     }
