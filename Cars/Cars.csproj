@@ -45,6 +45,10 @@
   <ItemGroup>
     <Compile Include="Phase2\Car.cs" />
     <Compile Include="Phase2\Program2.cs" />
+    <Compile Include="Phase3\Car.cs" />
+    <Compile Include="Phase3\Automobile.cs" />
+    <Compile Include="Phase3\Lorry.cs" />
+    <Compile Include="Phase3\Program2.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReturnValue.cs" />
