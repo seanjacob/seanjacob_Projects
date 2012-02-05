@@ -3,42 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Cars.Phase2
+namespace Cars.Phase3
 {
  
-    public class Car
+    public class Automobile
     {
-
         public decimal FuelLevel { get; set; }
         public decimal FuelCapacity { get; set; }
         public decimal Mileage { get; set; }
-        public decimal AvgMPG { get; set; }
-        public int Wheels { get; set; }
-        public int Gears { get; set; }
-        public int EngineCC { get; set; }
-        public int TopSpeed { get; set; }
-        public string Manufacturer { get; set; }
-        public string Model { get; set; }
-        public string Info { get; set; }        
+        public decimal AvgMPG { get; set; }        
+                
+        public string Info { get; set; }
+        public bool MOT { get; set; }
+        public bool SatNav { get; set; }        
 
-        public Car(string model) 
+
+        public Automobile( bool satnav ) 
         {
-            FuelCapacity = 50;
-            AvgMPG = 10;
-            Manufacturer = "Citroen";
-            Model = model;
-            Wheels = 4;
-            Gears = 5;
-            EngineCC = 1400;
-            TopSpeed = 120;
+            MOT = true;
+            SatNav = satnav;            
         }
         
         void CalculateInfo()
         {
             string[] infoArr = { 
-                                   "Wheels", Wheels.ToString(), 
-                                   "Top Speed", TopSpeed.ToString(),
-                                   "Gears", Gears.ToString(),
+                                   "MOT", MOT.ToString(),
+                                   "Sat Nav", SatNav.ToString(),
+                                   "Manufacturer", Car.Manufacturer,
+                                   "Model", Car.Model,
+                                   "Wheels", Car.Wheels.ToString(),
+                                   "Gears", Car.Gears.ToString(),                                                                      
                                    "Fuel Level", FuelLevel.ToString()
                                };
 

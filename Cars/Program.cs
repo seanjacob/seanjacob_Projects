@@ -2,34 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Cars.Phase2;
+using Cars.Phase3;
 
 namespace Cars
 {
     public class Program
     {
-
-        public static decimal FuelLevel { get; set; }
-        public static decimal FuelCapacity { get; set; }
-        public static decimal Mileage { get; set; }
-        public static decimal AvgMPG { get; set; }        
-        public static int Wheels { get; set; }
-        public static int Gears { get; set; }
-        public static int EngineCC { get; set; }
-        public static int TopSpeed { get; set; }
-        public static string manufacturer { get; set; }
-        public static string model { get; set; }
-
-        
+                
         public static void Main(string[] args)
         {
             //RunProgram1();
-            Program2 myObject = new Program2();
+            //Program2 myObject = new Program2();
+            
+            Program3 myObject = new Program3();
+
             Console.WriteLine("Welcome to my car app. Please see the available commands below:");
             Console.WriteLine("1. get info - get info of car");
             Console.WriteLine("2. add fuel - add fuel to car");
             Console.WriteLine("3. plan - plan journey \n");
-            //Console.WriteLine("4. drive - add mileage to car \n");
+            
             while (true) // Loop indefinitely
             {                
                 string userCommand = Console.ReadLine().ToLower(); // Get string from user                
@@ -37,6 +28,19 @@ namespace Cars
             }
             
         }
+
+
+
+        public static decimal FuelLevel { get; set; }
+        public static decimal FuelCapacity { get; set; }
+        public static decimal Mileage { get; set; }
+        public static decimal AvgMPG { get; set; }
+        public static int Wheels { get; set; }
+        public static int Gears { get; set; }
+        public static int EngineCC { get; set; }
+        public static int TopSpeed { get; set; }
+        public static string manufacturer { get; set; }
+        public static string model { get; set; }
 
         public static void RunProgram1()
         {

@@ -11,7 +11,7 @@ namespace Cars.Phase2
 
         public Program2()
         {
-            MyCar = new Car("Saxo");
+            //MyCar = new Car();
         }
 
         public void Run(string command)
