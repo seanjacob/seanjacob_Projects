@@ -3,34 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Cars.Phase3
+namespace Cars.Phase4
 {
-    public class Program3
+    public class Program4
     {        
         public Car MyCar { get; set; }
         public Lorry MyLorry { get; set; }
         public AutomobileType CurrentAutomobile { get; set; }
         public enum AutomobileType 
         { 
-            Car,
+            Hatchback,
+            Saloon,
             Lorry
         } 
 
-        public Program3()
+        public Program4()
         {          
-            MyCar = new Car(true, "Citroen", "Saxo");
+            MyHatchback = new Hatchback(true, "Citroen", "Saxo");
+            MySaloon = new Saloon(true, "Audi", "A3");
             MyLorry = new Lorry(true, "Mercades", "Actros");
 
-            CurrentAutomobile = AutomobileType.Car;
+            CurrentAutomobile = AutomobileType.Hatchback;
         }
 
         public Automobile GetAutomobile()
         {
             switch (CurrentAutomobile)
             {
-                case AutomobileType.Car : return MyCar;
+                case AutomobileType.Hatchback : return MyHatchback;
+                case AutomobileType.Saloon: return MySaloon;
                 case AutomobileType.Lorry : return MyLorry;
-                default : return MyCar;
+                default : return MyHatchback;
             }
 
         }
@@ -52,8 +55,15 @@ namespace Cars.Phase3
             }
 
             else if (command.StartsWith("get info"))
-            {
-                Console.WriteLine(GetAutomobile().GetInfo());
+            {                
+                if (CurrentAutomobile == AutomobileType.Hatchback)
+                    Console.WriteLine(MyHatchback.GetInfo());
+
+                else if (CurrentAutomobile == AutomobileType.Saloon)
+                    Console.WriteLine(MySaloon.GetInfo());
+
+                else if (CurrentAutomobile == AutomobileType.Lorry)
+                    Console.WriteLine(MyLorry.GetInfo());
             }
 
             else if (command.StartsWith("add fuel")) // Check string

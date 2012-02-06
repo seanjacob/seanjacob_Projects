@@ -43,6 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Phase4\Automobile.cs" />
+    <Compile Include="Phase4\Car.cs" />
+    <Compile Include="Phase4\Hatchback.cs" />
+    <Compile Include="Phase4\Lorry.cs" />
+    <Compile Include="Phase4\Program4.cs" />
+    <Compile Include="Phase4\Saloon.cs" />
     <Compile Include="Phase2\Car.cs" />
     <Compile Include="Phase2\Program2.cs" />
     <Compile Include="Phase3\Car.cs" />
