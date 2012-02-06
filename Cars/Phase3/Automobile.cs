@@ -52,11 +52,12 @@ namespace Cars.Phase3
             }
         }
 
-        public string GetInfo()
+      
+        public virtual string GetInfo()
         {
-            Info = "";
-            CalculateInfo();
-            return (Info);
+                Info = "";
+                CalculateInfo();
+                return Info;
         }
 
 

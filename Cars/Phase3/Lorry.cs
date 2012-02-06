@@ -17,7 +17,12 @@ namespace Cars.Phase3
             Gears = 6;
             EngineCC = 2000;
             TopSpeed = 120;
-        }                
+        }
+
+        public override string GetInfo(string g)
+        {
+            return "Lorry";
+        }
 
     }
 }

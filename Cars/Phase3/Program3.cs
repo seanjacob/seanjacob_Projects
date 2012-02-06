@@ -21,7 +21,15 @@ namespace Cars.Phase3
             MyCar = new Car(true, "Citroen", "Saxo");
             MyLorry = new Lorry(true, "Mercades", "Actros");
 
-            CurrentAutomobile = AutomobileType.Car;            
+            CurrentAutomobile = AutomobileType.Car;
+        }
+
+        private void Drive()
+        {
+            if (CurrentAutomobile == AutomobileType.Car)
+                MyCar.Drive();
+            else if (CurrentAutomobile == AutomobileType.Lorry)
+                MyLorry.Drive();
         }
 
         public Automobile GetAutomobile()
