@@ -9,7 +9,7 @@ namespace Cars.Phase4
     public class Lorry : Automobile
     {
 
-        public Lorry(bool satnav, string manufacturer, string model) : base(satnav, manufacturer, model)
+        public Lorry(bool satnav, string manufacturer, string model, bool locked) : base(satnav, manufacturer, model, locked)
         {
             FuelCapacity = 150;
             AvgMPG = 10;

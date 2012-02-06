@@ -7,7 +7,8 @@ namespace Cars.Phase4
 {
     public class Program4
     {        
-        public Car MyCar { get; set; }
+        public Hatchback MyHatchback { get; set; }
+        public Saloon MySaloon { get; set; }
         public Lorry MyLorry { get; set; }
         public AutomobileType CurrentAutomobile { get; set; }
         public enum AutomobileType 
@@ -19,9 +20,9 @@ namespace Cars.Phase4
 
         public Program4()
         {          
-            MyHatchback = new Hatchback(true, "Citroen", "Saxo");
-            MySaloon = new Saloon(true, "Audi", "A3");
-            MyLorry = new Lorry(true, "Mercades", "Actros");
+            MyHatchback = new Hatchback(true, "Citroen", "Saxo", true);
+            MySaloon = new Saloon(true, "Audi", "A3", true);
+            MyLorry = new Lorry(true, "Mercades", "Actros", true);
 
             CurrentAutomobile = AutomobileType.Hatchback;
         }
@@ -45,25 +46,49 @@ namespace Cars.Phase4
             {
                 switch (CurrentAutomobile)
                 {
-                    case AutomobileType.Car : CurrentAutomobile = AutomobileType.Lorry;
+                    case AutomobileType.Hatchback : CurrentAutomobile = AutomobileType.Saloon;
+                        Console.WriteLine("You have switched to a Saloon\n");
+                        break;
+                    case AutomobileType.Saloon: CurrentAutomobile = AutomobileType.Lorry;
                         Console.WriteLine("You have switched to a Lorry\n");
                         break;
-                    case AutomobileType.Lorry: CurrentAutomobile = AutomobileType.Car;
-                        Console.WriteLine("You have switched to a Car\n");
+                    case AutomobileType.Lorry: CurrentAutomobile = AutomobileType.Hatchback;
+                        Console.WriteLine("You have switched to a Hatchback\n");
                         break;
                 }                                
             }
 
             else if (command.StartsWith("get info"))
             {                
-                if (CurrentAutomobile == AutomobileType.Hatchback)
-                    Console.WriteLine(MyHatchback.GetInfo());
+                Console.WriteLine(GetAutomobile().GetInfo());
+            }
 
+            else if (command.StartsWith("lock"))
+            {
+                ReturnValue ret = GetAutomobile().Lock();
+                if (ret.Success) Console.WriteLine(ret.Message);
+            }
+
+            else if (command.StartsWith("unlock"))
+            {
+                if (CurrentAutomobile == AutomobileType.Hatchback)
+                {
+                    ReturnValue ret = MyHatchback.Unlock();
+                    if (ret.Success) Console.WriteLine(ret.Message);
+                }
                 else if (CurrentAutomobile == AutomobileType.Saloon)
-                    Console.WriteLine(MySaloon.GetInfo());
+                {
+                    Console.WriteLine("Please provide a code."); ;
+                    string code = Console.ReadLine().ToLower();                    
+                    ReturnValue ret = MySaloon.Unlock(code);
+                    if (ret.Success) Console.WriteLine(ret.Message);
+                }
 
                 else if (CurrentAutomobile == AutomobileType.Lorry)
-                    Console.WriteLine(MyLorry.GetInfo());
+                {
+                    ReturnValue ret = MyLorry.Unlock();
+                    if (ret.Success) Console.WriteLine(ret.Message);
+                }
             }
 
             else if (command.StartsWith("add fuel")) // Check string
@@ -122,7 +147,14 @@ namespace Cars.Phase4
                         string commandDrive = Console.ReadLine().ToLower();
                         if (commandDrive.StartsWith("y"))
                         {
-                            Console.WriteLine(GetAutomobile().Drive(mileageAmount));
+                            if(GetAutomobile().Locked.Equals(false))
+                            {
+                                Console.WriteLine(GetAutomobile().Drive(mileageAmount));
+                            }
+                            else
+                            {
+                                Console.WriteLine("You need to unlock your " + CurrentAutomobile + ".\n");
+                            }
                         }
                         else
                         {

@@ -22,14 +22,16 @@ namespace Cars.Phase4
         public string Info { get; set; }
         public bool MOT { get; set; }
         public bool SatNav { get; set; }
+        public bool Locked { get; set; }
 
 
-        public Automobile(bool satnav, string manufacturer, string model) 
+        public Automobile(bool satnav, string manufacturer, string model, bool locked) 
         {
             MOT = true;
             SatNav = satnav;
             Manufacturer = manufacturer;
             Model = model;
+            Locked = locked;
         }
         
         private void CalculateInfo()
@@ -37,6 +39,7 @@ namespace Cars.Phase4
             string[] infoArr = { 
                                    "MOT", MOT.ToString(),
                                    "Sat Nav", SatNav.ToString(),
+                                   "Locked", Locked.ToString(),
                                    "Manufacturer", Manufacturer,
                                    "Model", Model,
                                    "Wheels", Wheels.ToString(),
@@ -60,6 +63,22 @@ namespace Cars.Phase4
                 return Info;
         }
 
+        public string Reverse()
+        {
+            return("This vehical is reversing.");
+        }
+
+        public ReturnValue Lock()
+        {
+            Locked = true;
+            return new ReturnValue(true, "Vehical locked.\n");
+        }
+
+        public ReturnValue Unlock()
+        {
+            Locked = false;
+            return new ReturnValue(true, "Vehical unlocked.\n");
+        }
 
         public ReturnValue AddFuel(decimal amount)
         {

@@ -40,7 +40,8 @@ namespace Cars.Phase3
                                    "Manufacturer", Manufacturer,
                                    "Model", Model,
                                    "Wheels", Wheels.ToString(),
-                                   "Gears", Gears.ToString(),                                                                      
+                                   "Gears", Gears.ToString(),
+                                   "EngineCC", EngineCC.ToString(),
                                    "Fuel Level", FuelLevel.ToString()
                                };
 

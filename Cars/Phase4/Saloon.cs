@@ -7,17 +7,37 @@ namespace Cars.Phase4
 {
 
     public class Saloon : Car
-    {   
+    {
 
-        public Saloon( bool satnav, string manufacturer, string model) : base(satnav, manufacturer, model)
+        public string AlarmCode { get; set; }
+
+        public Saloon(bool satnav, string manufacturer, string model, bool locked) : base(satnav,  manufacturer,  model, locked)
         {
             
-            FuelCapacity = 50;
-            AvgMPG = 20;
+            FuelCapacity = 70;
+            AvgMPG = 30;
             Wheels = 4;
             Gears = 5;
-            EngineCC = 1400;
-            TopSpeed = 120;
+            EngineCC = 1800;
+            TopSpeed = 150;
+            AlarmCode = "abc12345";
+        }
+
+        public ReturnValue Unlock(string code)
+        {
+            if (code.Equals(AlarmCode))
+            {
+                Locked = false;
+                return new ReturnValue(true, "Passcode allowed. Vehical unlocked.\n");
+            }
+            else
+            {
+                Locked = true;
+                return new ReturnValue(false, "Passcode denied. Vehical locked.\n");                                
+            }
+            
+            
+            return new ReturnValue(true, "Vehical unlocked.\n");
         }                
 
     }
