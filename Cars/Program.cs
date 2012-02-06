@@ -19,7 +19,9 @@ namespace Cars
             Console.WriteLine("Welcome to my car app. Please see the available commands below:");
             Console.WriteLine("1. get info - get info of car");
             Console.WriteLine("2. add fuel - add fuel to car");
-            Console.WriteLine("3. plan - plan journey \n");
+            Console.WriteLine("3. plan - plan journey");
+            Console.WriteLine("4. switch - use a car or lorry\n");
+            Console.WriteLine("You are currently in a car\n");
             
             while (true) // Loop indefinitely
             {                

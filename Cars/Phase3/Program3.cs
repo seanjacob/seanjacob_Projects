@@ -6,46 +6,54 @@ using System.Text;
 namespace Cars.Phase3
 {
     public class Program3
-    {
-        public Automobile MyVehical { get; set; }        
+    {        
+        public Car MyCar { get; set; }
+        public Lorry MyLorry { get; set; }
+        public AutomobileType CurrentAutomobile { get; set; }
+        public enum AutomobileType 
+        { 
+            Car,
+            Lorry
+        } 
 
         public Program3()
+        {          
+            MyCar = new Car(true, "Citroen", "Saxo");
+            MyLorry = new Lorry(true, "Mercades", "Actros");
+
+            CurrentAutomobile = AutomobileType.Car;            
+        }
+
+        public Automobile GetAutomobile()
         {
-            Console.WriteLine("Are you driving a Car/Lorry?");
-            
-            string vehicle = Console.ReadLine().ToLower();
-
-            if ((vehicle.Equals("car")) || (vehicle.Equals("lorry")))
+            switch (CurrentAutomobile)
             {
-                Console.WriteLine("What is the " + vehicle + "'s manufacturer?");
-                string manufacturer = Console.ReadLine();
-
-                Console.WriteLine("What is the " + vehicle + "'s model?");
-                string model = Console.ReadLine();
-
-                Console.WriteLine("Do you have a sat nav Y/N?");
-                string input = Console.ReadLine().ToLower();
-                bool satnav = false;
-                switch (input)
-                {
-                    case "y": satnav = true; break;
-                    case "n": satnav = false; break;
-                    default: Console.WriteLine("Game over."); break;
-                }
-
-                switch (vehicle)
-                {
-                    case "car": MyVehical = new Car(satnav, manufacturer, model); break;
-                    case "lorry": MyVehical = new Lorry(satnav, manufacturer, model); break;
-                }              
+                case AutomobileType.Car : return MyCar;
+                case AutomobileType.Lorry : return MyLorry;
+                default : return MyCar;
             }
+
         }
 
         public void Run(string command)
-        {
-            if (command.StartsWith("get info"))
+        {            
+
+            if (command.StartsWith("switch"))
             {
-                Console.WriteLine(MyVehical.GetInfo());
+                switch (CurrentAutomobile)
+                {
+                    case AutomobileType.Car : CurrentAutomobile = AutomobileType.Lorry;
+                        Console.WriteLine("You have switched to a Lorry\n");
+                        break;
+                    case AutomobileType.Lorry: CurrentAutomobile = AutomobileType.Car;
+                        Console.WriteLine("You have switched to a Car\n");
+                        break;
+                }                                
+            }
+
+            else if (command.StartsWith("get info"))
+            {
+                Console.WriteLine(GetAutomobile().GetInfo());
             }
 
             else if (command.StartsWith("add fuel")) // Check string
@@ -61,7 +69,7 @@ namespace Cars.Phase3
                         string commandAmount = Console.ReadLine();
                         decimal fuelAmount = Decimal.Parse(commandAmount);
 
-                        ReturnValue ret = MyVehical.AddFuel(fuelAmount);
+                        ReturnValue ret = GetAutomobile().AddFuel(fuelAmount);
 
                         if (ret.Success == true)
                         {
@@ -96,7 +104,7 @@ namespace Cars.Phase3
                     string commandAmount = Console.ReadLine();
                     decimal mileageAmount = Decimal.Parse(commandAmount);
 
-                    ReturnValue ret = MyVehical.Plan(mileageAmount);
+                    ReturnValue ret = GetAutomobile().Plan(mileageAmount);
 
                     if (ret.Success == true)
                     {
@@ -104,7 +112,7 @@ namespace Cars.Phase3
                         string commandDrive = Console.ReadLine().ToLower();
                         if (commandDrive.StartsWith("y"))
                         {
-                            Console.WriteLine(MyVehical.Drive(mileageAmount));
+                            Console.WriteLine(GetAutomobile().Drive(mileageAmount));
                         }
                         else
                         {

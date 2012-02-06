@@ -11,28 +11,36 @@ namespace Cars.Phase3
         public decimal FuelLevel { get; set; }
         public decimal FuelCapacity { get; set; }
         public decimal Mileage { get; set; }
-        public decimal AvgMPG { get; set; }        
+        public decimal AvgMPG { get; set; }
+        public int Wheels { get; set; }
+        public int Gears { get; set; }
+        public int EngineCC { get; set; }
+        public int TopSpeed { get; set; }
+        public string Manufacturer { get; set; }
+        public string Model { get; set; }      
                 
         public string Info { get; set; }
         public bool MOT { get; set; }
-        public bool SatNav { get; set; }        
+        public bool SatNav { get; set; }
 
 
-        public Automobile( bool satnav ) 
+        public Automobile(bool satnav, string manufacturer, string model) 
         {
             MOT = true;
-            SatNav = satnav;            
+            SatNav = satnav;
+            Manufacturer = manufacturer;
+            Model = model;
         }
         
-        void CalculateInfo()
+        private void CalculateInfo()
         {
             string[] infoArr = { 
                                    "MOT", MOT.ToString(),
                                    "Sat Nav", SatNav.ToString(),
-                                   "Manufacturer", Car.Manufacturer,
-                                   "Model", Car.Model,
-                                   "Wheels", Car.Wheels.ToString(),
-                                   "Gears", Car.Gears.ToString(),                                                                      
+                                   "Manufacturer", Manufacturer,
+                                   "Model", Model,
+                                   "Wheels", Wheels.ToString(),
+                                   "Gears", Gears.ToString(),                                                                      
                                    "Fuel Level", FuelLevel.ToString()
                                };
 
