@@ -9,7 +9,7 @@ namespace Cars.Phase4
     public class Lorry : Automobile
     {
 
-        public Lorry(bool satnav, string manufacturer, string model, bool locked) : base(satnav, manufacturer, model, locked)
+        public Lorry(bool satnav, string manufacturer, string model, bool locked, string fueltype) : base(satnav, manufacturer, model, locked, fueltype)
         {
             FuelCapacity = 150;
             AvgMPG = 10;
@@ -19,7 +19,10 @@ namespace Cars.Phase4
             TopSpeed = 120;
         }
 
-       
+        public override string Reverse()
+        {
+            return("BEEP! BEEP! this vehical is reversing...\n");
+        }
 
     }
 }

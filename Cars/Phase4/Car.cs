@@ -10,7 +10,7 @@ namespace Cars.Phase4
     {
 
 
-        public Car( bool satnav, string manufacturer, string model, bool locked) : base(satnav, manufacturer, model, locked)
+        public Car( bool satnav, string manufacturer, string model, bool locked, string fueltype) : base(satnav, manufacturer, model, locked, fueltype)
         {
             Wheels = 4;
             Gears = 5;

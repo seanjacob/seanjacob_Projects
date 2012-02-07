@@ -11,7 +11,7 @@ namespace Cars.Phase4
 
         public string AlarmCode { get; set; }
 
-        public Saloon(bool satnav, string manufacturer, string model, bool locked) : base(satnav,  manufacturer,  model, locked)
+        public Saloon(bool satnav, string manufacturer, string model, bool locked, string fueltype) : base(satnav,  manufacturer,  model, locked, fueltype)
         {
             
             FuelCapacity = 70;
@@ -34,11 +34,20 @@ namespace Cars.Phase4
             {
                 Locked = true;
                 return new ReturnValue(false, "Passcode denied. Vehical locked.\n");                                
+            }                                    
+        }
+
+        public override ReturnValue CheckFuelType(string type)
+        {
+            if (type.Equals(FuelType))
+            {
+                return new ReturnValue(true, "");
             }
-            
-            
-            return new ReturnValue(true, "Vehical unlocked.\n");
-        }                
+            else
+            {
+                return new ReturnValue(false, "You're trying to add the wrong fuel type.\n");
+            }
+        }
 
     }
 }

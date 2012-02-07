@@ -20,10 +20,11 @@ namespace Cars
             Console.WriteLine("Welcome to my car app. Please see the available commands below:");
             Console.WriteLine("1. get info - get info of vehical");
             Console.WriteLine("2. add fuel - add fuel to vehical");
-            Console.WriteLine("3. plan - plan journey");
-            Console.WriteLine("4. switch - switch between hatchback, saloon or lorry");
-            Console.WriteLine("5. unlock - unlock vehical");
-            Console.WriteLine("6. lock - lock vehical\n");
+            Console.WriteLine("3. drive - drive vehical");
+            Console.WriteLine("4. reverse - reverse vehical");
+            Console.WriteLine("5. switch - switch between hatchback, saloon or lorry");
+            Console.WriteLine("6. unlock - unlock vehical");
+            Console.WriteLine("7. lock - lock vehical\n");
             Console.WriteLine("You are currently in a Hatchback\n");
             
             while (true) // Loop indefinitely

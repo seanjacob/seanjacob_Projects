@@ -17,7 +17,8 @@ namespace Cars.Phase4
         public int EngineCC { get; set; }
         public int TopSpeed { get; set; }
         public string Manufacturer { get; set; }
-        public string Model { get; set; }      
+        public string Model { get; set; }
+        public string FuelType { get; set; }
                 
         public string Info { get; set; }
         public bool MOT { get; set; }
@@ -25,13 +26,14 @@ namespace Cars.Phase4
         public bool Locked { get; set; }
 
 
-        public Automobile(bool satnav, string manufacturer, string model, bool locked) 
+        public Automobile(bool satnav, string manufacturer, string model, bool locked, string fueltype) 
         {
             MOT = true;
             SatNav = satnav;
             Manufacturer = manufacturer;
             Model = model;
             Locked = locked;
+            FuelType = fueltype;
         }
         
         private void CalculateInfo()
@@ -44,7 +46,8 @@ namespace Cars.Phase4
                                    "Model", Model,
                                    "Wheels", Wheels.ToString(),
                                    "Gears", Gears.ToString(),                                                                      
-                                   "Fuel Level", FuelLevel.ToString()
+                                   "Fuel Level", FuelLevel.ToString(),
+                                   "Fuel Type", FuelType.ToString()
                                };
 
             for(int i = 0; i < infoArr.Length; i++)            
@@ -63,11 +66,6 @@ namespace Cars.Phase4
                 return Info;
         }
 
-        public string Reverse()
-        {
-            return("This vehical is reversing.");
-        }
-
         public ReturnValue Lock()
         {
             Locked = true;
@@ -80,20 +78,34 @@ namespace Cars.Phase4
             return new ReturnValue(true, "Vehical unlocked.\n");
         }
 
-        public ReturnValue AddFuel(decimal amount)
+        public virtual string Reverse()
+        {
+            return("This vehical is reversing...\n");
+        }
+
+        public string AddFuel(decimal amount)
+        {            
+            FuelLevel += amount;
+            return ("Fuel added. Current capacity is " + FuelLevel + " litres.\n");                
+        }
+
+        public ReturnValue CheckFuelAmount(decimal amount)
         {
             decimal newLevel = FuelLevel + amount;
-
             if (newLevel <= FuelCapacity)
-            {
-                FuelLevel = newLevel;
-                return new ReturnValue(true, "Fuel added. Current capacity is " + FuelLevel + " litres. \n");
+            {                
+                return new ReturnValue(true, "");
             }
             else
             {
                 decimal available = FuelCapacity - FuelLevel;
-                return new ReturnValue(false, "That’s too much you can only add " + available + " litres.  Do you want to try again Y/N?");
+                return new ReturnValue(false, "That’s too much you can only add " + available + " litres.\n");
             }
+        }
+
+        public virtual ReturnValue CheckFuelType(string type)
+        {
+            return new ReturnValue(true, "");
         }
 
         public string Drive(decimal mileageAmount)

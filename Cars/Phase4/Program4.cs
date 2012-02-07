@@ -20,9 +20,9 @@ namespace Cars.Phase4
 
         public Program4()
         {          
-            MyHatchback = new Hatchback(true, "Citroen", "Saxo", true);
-            MySaloon = new Saloon(true, "Audi", "A3", true);
-            MyLorry = new Lorry(true, "Mercades", "Actros", true);
+            MyHatchback = new Hatchback(true, "Citroen", "Saxo", true, "petrol");
+            MySaloon = new Saloon(true, "Audi", "A3", true, "diesel");
+            MyLorry = new Lorry(true, "Mercades", "Actros", true, "petrol");
 
             CurrentAutomobile = AutomobileType.Hatchback;
         }
@@ -100,27 +100,40 @@ namespace Cars.Phase4
                     {
 
                         Console.WriteLine("How much fuel?");
-
                         string commandAmount = Console.ReadLine();
                         decimal fuelAmount = Decimal.Parse(commandAmount);
+                        ReturnValue retAmount = GetAutomobile().CheckFuelAmount(fuelAmount);
 
-                        ReturnValue ret = GetAutomobile().AddFuel(fuelAmount);
-
-                        if (ret.Success == true)
+                        if (retAmount.Success)
                         {
-                            Console.WriteLine(ret.Message);
-                            break;
-                        }
-                        else
-                        {
-                            Console.WriteLine(ret.Message);
-                            string commandRetry = Console.ReadLine().ToLower();
-                            if (commandRetry.StartsWith("n"))
+                            if (CurrentAutomobile == AutomobileType.Saloon)
                             {
-                                Console.WriteLine("Ok then. \n");
+                                Console.WriteLine("What fuel type to add?");
+                                string fuelTypeAdd = Console.ReadLine().ToLower();
+                                ReturnValue retType = GetAutomobile().CheckFuelType(fuelTypeAdd);
+
+                                if (retType.Success)
+                                {
+                                    Console.WriteLine(GetAutomobile().AddFuel(fuelAmount));
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine(retType.Message);
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine(GetAutomobile().AddFuel(fuelAmount));
                                 break;
                             }
                         }
+                        else
+                        {
+                            Console.WriteLine(retAmount.Message);
+                            break;
+                        }                        
                     }
                 }
                 catch (Exception)
@@ -130,7 +143,7 @@ namespace Cars.Phase4
 
             }
 
-            else if (command.StartsWith("plan"))
+            else if (command.StartsWith("drive"))
             {
                 try
                 {
@@ -170,6 +183,11 @@ namespace Cars.Phase4
                 {
                     Console.WriteLine("Sorry an error occurred trying to add mileage \n");
                 }
+            }
+
+            else if (command.StartsWith("reverse"))
+            {
+                Console.WriteLine(GetAutomobile().Reverse());
             }
 
             else

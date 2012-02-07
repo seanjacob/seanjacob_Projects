@@ -9,7 +9,7 @@ namespace Cars.Phase4
     public class Hatchback : Car
     {
 
-        public Hatchback(bool satnav, string manufacturer, string model, bool locked) : base(satnav,  manufacturer,  model, locked)
+        public Hatchback(bool satnav, string manufacturer, string model, bool locked, string fueltype) : base(satnav,  manufacturer, model, locked, fueltype)
         {
             
             FuelCapacity = 50;
