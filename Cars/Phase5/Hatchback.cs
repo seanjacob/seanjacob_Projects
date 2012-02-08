@@ -6,16 +6,16 @@ using System.Text;
 namespace Cars.Phase5
 {
 
-    public class Hatchback : Car
+    public class Hatchback : Car //Inheritance
     {
 
-        public Hatchback(bool satnav, string manufacturer, string model, bool locked, string fueltype) : base(satnav,  manufacturer, model, locked, fueltype)
+        public Hatchback(Engine engine, bool satnav, string manufacturer, string model, bool locked, string fueltype) : base(engine, satnav, manufacturer, model, locked, fueltype)
         {
             
             FuelCapacity = 50;
-            AvgMPG = 20;
-            EngineCC = 1400;
+            AvgMPG = 20;            
             TopSpeed = 120;
+            Engine = engine;
         }                
 
     }

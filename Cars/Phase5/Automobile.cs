@@ -11,11 +11,10 @@ namespace Cars.Phase5
     {
         public decimal FuelLevel { get; set; }
         public decimal FuelCapacity { get; set; }
-        public decimal Mileage { get; set; }
+        
         public decimal AvgMPG { get; set; }
         public int Wheels { get; set; }
-        public int Gears { get; set; }
-        public int EngineCC { get; set; }
+        public int Gears { get; set; }        
         public int TopSpeed { get; set; }
         public string Manufacturer { get; set; }
         public string Model { get; set; }
@@ -25,9 +24,11 @@ namespace Cars.Phase5
         public bool MOT { get; set; }
         public bool SatNav { get; set; }
         public bool Locked { get; set; }
+
+        public Engine Engine { get; set; } //Association
     
 
-        public Automobile( bool satnav, string manufacturer, string model, bool locked, string fueltype) 
+        public Automobile(Engine engine, bool satnav, string manufacturer, string model, bool locked, string fueltype) 
         {
             MOT = true;
             SatNav = satnav;
@@ -35,21 +36,24 @@ namespace Cars.Phase5
             Model = model;
             Locked = locked;
             FuelType = fueltype;
+            Engine = engine;
         }
         
         private void CalculateInfo()
         {
             string[] infoArr = { 
-                                   "MOT", MOT.ToString(),
-                                   "Sat Nav", SatNav.ToString(),
-                                   "Locked", Locked.ToString(),
-                                   "Manufacturer", Manufacturer,
-                                   "Model", Model,
-                                   "Wheels", Wheels.ToString(),
-                                   "Gears", Gears.ToString(),                                                                      
-                                   "Fuel Level", FuelLevel.ToString(),
-                                   "Fuel Type", FuelType.ToString()
-                               };
+                                    "MOT", MOT.ToString(),
+                                    "Sat Nav", SatNav.ToString(),
+                                    "Locked", Locked.ToString(),
+                                    "Manufacturer", Manufacturer,
+                                    "Model", Model,
+                                    "Wheels", Wheels.ToString(),
+                                    "Gears", Gears.ToString(),                                                                      
+                                    "Fuel Level", FuelLevel.ToString(),
+                                    "Fuel Type", FuelType.ToString(),
+                                    "EngineCC", Engine.EngineCC.ToString(),
+                                    "Mileage", Engine.Mileage.ToString()
+                                };
 
             for(int i = 0; i < infoArr.Length; i++)            
             {                 
@@ -111,6 +115,7 @@ namespace Cars.Phase5
 
         public string Drive(decimal mileageAmount)
         {
+            decimal Mileage = 0;
             Mileage += mileageAmount;
             FuelLevel -= (mileageAmount / AvgMPG);
             Info = "You have driven " + mileageAmount + " miles. Total car mileage " + Mileage + "\n";

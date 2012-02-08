@@ -6,7 +6,7 @@ using System.Text;
 namespace Cars.Phase5
 {
     public class Program5
-    {        
+    {                
         public Hatchback MyHatchback { get; set; }
         public Saloon MySaloon { get; set; }
         public Lorry MyLorry { get; set; }
@@ -20,9 +20,14 @@ namespace Cars.Phase5
 
         public Program5()
         {
-            MyHatchback = new Hatchback(true, "Citroen", "Saxo", true, "petrol");
-            MySaloon = new Saloon(true, "Audi", "A3", true, "diesel");
-            MyLorry = new Lorry( true, "Mercades", "Actros", true, "petrol");
+            Engine myHatchbackEngine = new Engine(1400);
+            MyHatchback = new Hatchback(myHatchbackEngine, true, "Citroen", "Saxo", true, "petrol");
+
+            Engine mySaloonEngine = new Engine(1800);
+            MySaloon = new Saloon(mySaloonEngine, true, "Audi", "A3", true, "diesel");
+            
+            Engine myLorryEngine = new Engine(2000);
+            MyLorry = new Lorry(myLorryEngine, true, "Mercades", "Actros", true, "petrol");
 
             CurrentAutomobile = AutomobileType.Hatchback;
         }

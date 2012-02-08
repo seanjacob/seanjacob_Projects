@@ -6,21 +6,20 @@ using System.Text;
 namespace Cars.Phase5
 {
 
-    public class Saloon : Car
+    public class Saloon : Car //Inheritance
     {
 
         public string AlarmCode { get; set; }
 
-        public Saloon(bool satnav, string manufacturer, string model, bool locked, string fueltype) : base(satnav,  manufacturer,  model, locked, fueltype)
+        public Saloon(Engine engine, bool satnav, string manufacturer, string model, bool locked, string fueltype) : base(engine, satnav, manufacturer, model, locked, fueltype)
         {
             
             FuelCapacity = 70;
             AvgMPG = 30;
             Wheels = 4;
-            Gears = 5;
-            EngineCC = 1800;
-            TopSpeed = 150;
+            Gears = 5;                        
             AlarmCode = "abc12345";
+            Engine = engine;
         }
 
         public override ReturnValue Unlock()

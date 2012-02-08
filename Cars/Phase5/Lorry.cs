@@ -6,17 +6,17 @@ using System.Text;
 namespace Cars.Phase5
 {
 
-    public class Lorry : Automobile
+    public class Lorry : Automobile //Inheritance
     {
 
-        public Lorry(bool satnav, string manufacturer, string model, bool locked, string fueltype) : base(satnav, manufacturer, model, locked, fueltype)
+        public Lorry(Engine engine, bool satnav, string manufacturer, string model, bool locked, string fueltype) : base(engine, satnav, manufacturer, model, locked, fueltype)
         {
             FuelCapacity = 150;
             AvgMPG = 10;
             Wheels = 6;
-            Gears = 6;
-            EngineCC = 2000;
+            Gears = 6;            
             TopSpeed = 120;
+            Engine = engine;
         }
 
         public override string Reverse()
