@@ -5,7 +5,8 @@ using System.Text;
 
 namespace Cars.Phase4
 {
- 
+
+    
     public class Automobile
     {
         public decimal FuelLevel { get; set; }
@@ -24,9 +25,9 @@ namespace Cars.Phase4
         public bool MOT { get; set; }
         public bool SatNav { get; set; }
         public bool Locked { get; set; }
+    
 
-
-        public Automobile(bool satnav, string manufacturer, string model, bool locked, string fueltype) 
+        public Automobile( bool satnav, string manufacturer, string model, bool locked, string fueltype) 
         {
             MOT = true;
             SatNav = satnav;
@@ -72,7 +73,7 @@ namespace Cars.Phase4
             return new ReturnValue(true, "Vehical locked.\n");
         }
 
-        public ReturnValue Unlock()
+        public virtual ReturnValue Unlock()
         {
             Locked = false;
             return new ReturnValue(true, "Vehical unlocked.\n");
@@ -103,7 +104,7 @@ namespace Cars.Phase4
             }
         }
 
-        public virtual ReturnValue CheckFuelType(string type)
+        public virtual ReturnValue CheckFuelType(string fueltype)
         {
             return new ReturnValue(true, "");
         }
@@ -113,6 +114,7 @@ namespace Cars.Phase4
             Mileage += mileageAmount;
             FuelLevel -= (mileageAmount / AvgMPG);
             Info = "You have driven " + mileageAmount + " miles. Total car mileage " + Mileage + "\n";
+            
             return(Info);
         }
 

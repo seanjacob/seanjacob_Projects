@@ -23,6 +23,11 @@ namespace Cars.Phase4
             AlarmCode = "abc12345";
         }
 
+        public override ReturnValue Unlock()
+        {
+            return Unlock("");
+        }
+        
         public ReturnValue Unlock(string code)
         {
             if (code.Equals(AlarmCode))
@@ -35,7 +40,7 @@ namespace Cars.Phase4
                 Locked = true;
                 return new ReturnValue(false, "Passcode denied. Vehical locked.\n");                                
             }                                    
-        }
+        }        
 
         public override ReturnValue CheckFuelType(string type)
         {

@@ -19,10 +19,10 @@ namespace Cars.Phase4
         } 
 
         public Program4()
-        {          
+        {
             MyHatchback = new Hatchback(true, "Citroen", "Saxo", true, "petrol");
             MySaloon = new Saloon(true, "Audi", "A3", true, "diesel");
-            MyLorry = new Lorry(true, "Mercades", "Actros", true, "petrol");
+            MyLorry = new Lorry( true, "Mercades", "Actros", true, "petrol");
 
             CurrentAutomobile = AutomobileType.Hatchback;
         }
@@ -107,7 +107,7 @@ namespace Cars.Phase4
                         if (retAmount.Success)
                         {
                             if (CurrentAutomobile == AutomobileType.Saloon)
-                            {
+                            {                                
                                 Console.WriteLine("What fuel type to add?");
                                 string fuelTypeAdd = Console.ReadLine().ToLower();
                                 ReturnValue retType = GetAutomobile().CheckFuelType(fuelTypeAdd);
