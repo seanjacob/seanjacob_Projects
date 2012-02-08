@@ -19,13 +19,14 @@ namespace Cars
             Program5 myObject = new Program5();
 
             Console.WriteLine("Welcome to my car app. Please see the available commands below:");
-            Console.WriteLine("1. get info - get info of vehical");
-            Console.WriteLine("2. add fuel - add fuel to vehical");
-            Console.WriteLine("3. drive - drive vehical");
-            Console.WriteLine("4. reverse - reverse vehical");
+            Console.WriteLine("1. get info - get info of vehicle");
+            Console.WriteLine("2. add fuel - add fuel to vehicle");
+            Console.WriteLine("3. drive - drive vehicle");
+            Console.WriteLine("4. reverse - reverse vehicle");
             Console.WriteLine("5. switch - switch between hatchback, saloon or lorry");
-            Console.WriteLine("6. unlock - unlock vehical");
-            Console.WriteLine("7. lock - lock vehical\n");
+            Console.WriteLine("6. unlock - unlock vehicle");
+            Console.WriteLine("7. lock - lock vehicle");
+            Console.WriteLine("8. service - service vehicle\n");
             Console.WriteLine("You are currently in a Hatchback\n");
             
             while (true) // Loop indefinitely

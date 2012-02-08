@@ -68,6 +68,11 @@ namespace Cars.Phase5
                 Console.WriteLine(GetAutomobile().GetInfo());
             }
 
+            else if (command.StartsWith("service"))
+            {
+                Console.WriteLine(GetAutomobile().Engine.Service());
+            }
+
             else if (command.StartsWith("lock"))
             {
                 ReturnValue ret = GetAutomobile().Lock();

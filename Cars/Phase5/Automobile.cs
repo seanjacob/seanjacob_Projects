@@ -52,7 +52,8 @@ namespace Cars.Phase5
                                     "Fuel Level", FuelLevel.ToString(),
                                     "Fuel Type", FuelType.ToString(),
                                     "EngineCC", Engine.EngineCC.ToString(),
-                                    "Mileage", Engine.Mileage.ToString()
+                                    "Mileage", Engine.Mileage.ToString(),
+                                    "Service Needed", Engine.ServiceNeeded.ToString()
                                 };
 
             for(int i = 0; i < infoArr.Length; i++)            
@@ -114,13 +115,12 @@ namespace Cars.Phase5
         }
 
         public string Drive(decimal mileageAmount)
-        {
-            decimal Mileage = 0;
-            Mileage += mileageAmount;
+        {            
             FuelLevel -= (mileageAmount / AvgMPG);
-            Info = "You have driven " + mileageAmount + " miles. Total car mileage " + Mileage + "\n";
+
+            string message = Engine.AddMileage(mileageAmount);
             
-            return(Info);
+            return(message);
         }
 
         public ReturnValue Plan(decimal miles)
