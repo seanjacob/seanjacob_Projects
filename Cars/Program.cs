@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Cars.Phase5;
+using Cars.Phase6;
 
 namespace Cars
 {
@@ -15,8 +15,9 @@ namespace Cars
             //Program2 myObject = new Program2();
             //Program3 myObject = new Program3();
             //Program4 myObject = new Program4();
+            //Program5 myObject = new Program5();
 
-            Program5 myObject = new Program5();
+            Program6 myObject = new Program6();
 
             Console.WriteLine("Welcome to my car app. Please see the available commands below:");
             Console.WriteLine("1. get info - get info of vehicle");
