@@ -114,13 +114,11 @@ namespace Cars.Phase6
             return new ReturnValue(true, "");
         }
 
-        public string Drive(decimal mileageAmount)
+        public void Drive(decimal mileageAmount)
         {            
             FuelLevel -= (mileageAmount / AvgMPG);
 
-            string message = Engine.AddMileage(mileageAmount);
-            
-            return(message);
+            Console.WriteLine(Engine.AddMileage(mileageAmount));
         }
 
         public ReturnValue Plan(decimal miles)

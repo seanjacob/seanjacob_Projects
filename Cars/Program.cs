@@ -19,22 +19,22 @@ namespace Cars
 
             Program6 myObject = new Program6();
 
-            Console.WriteLine("Welcome to my car app. Please see the available commands below:");
-            Console.WriteLine("1. get info - get info of vehicle");
-            Console.WriteLine("2. add fuel - add fuel to vehicle");
-            Console.WriteLine("3. drive - drive vehicle");
-            Console.WriteLine("4. reverse - reverse vehicle");
-            Console.WriteLine("5. switch - switch between hatchback, saloon or lorry");
-            Console.WriteLine("6. unlock - unlock vehicle");
-            Console.WriteLine("7. lock - lock vehicle");
-            Console.WriteLine("8. service - service vehicle\n");
-            Console.WriteLine("You are currently in a Hatchback\n");
+            //Console.WriteLine("Welcome to my car app. Please see the available commands below:");
+            //Console.WriteLine("1. get info - get info of vehicle");
+            //Console.WriteLine("2. add fuel - add fuel to vehicle");
+            //Console.WriteLine("3. drive - drive vehicle");
+            //Console.WriteLine("4. reverse - reverse vehicle");
+            //Console.WriteLine("5. switch - switch between hatchback, saloon or lorry");
+            //Console.WriteLine("6. unlock - unlock vehicle");
+            //Console.WriteLine("7. lock - lock vehicle");
+            //Console.WriteLine("8. service - service vehicle\n");
+            //Console.WriteLine("You are currently in a Hatchback\n");
             
-            while (true) // Loop indefinitely
-            {                
-                string userCommand = Console.ReadLine().ToLower(); // Get string from user                
-                myObject.Run(userCommand);
-            }
+            //while (true) // Loop indefinitely
+            //{                
+            //    string userCommand = Console.ReadLine().ToLower(); // Get string from user                
+            //    myObject.Run(userCommand);
+            //}
             
         }
 

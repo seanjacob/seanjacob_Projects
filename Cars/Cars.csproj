@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Phase6\Automobile.cs" />
     <Compile Include="Phase6\Car.cs" />
+    <Compile Include="Phase6\Stig.cs" />
     <Compile Include="Phase6\Engine.cs" />
     <Compile Include="Phase6\Hatchback.cs" />
     <Compile Include="Phase6\IDriveable.cs" />

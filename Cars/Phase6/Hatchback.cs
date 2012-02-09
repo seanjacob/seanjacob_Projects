@@ -6,7 +6,7 @@ using System.Text;
 namespace Cars.Phase6
 {
 
-    public class Hatchback : Car //Inheritance
+    public class Hatchback : Car, IDriveable
     {
 
         public Hatchback(Engine engine, bool satnav, string manufacturer, string model, bool locked, string fueltype) : base(engine, satnav, manufacturer, model, locked, fueltype)
@@ -16,7 +16,6 @@ namespace Cars.Phase6
             AvgMPG = 20;            
             TopSpeed = 120;
             Engine = engine;
-        }                
-
+        }
     }
 }
