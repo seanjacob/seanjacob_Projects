@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Calculator</h2>
+@using (@Html.BeginForm("Add", "Calculator", null, FormMethod.Post, null))
+{
+    <fieldset>
+        <legend>Add Numbers</legend>
+        <p>Input <input type="text" name="input" value="1,2,3"/></p>
+        <input type="submit" value="Calculate"/>
+    </fieldset>
+}
